@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         TextView tv = findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+
+        nativeDownload();
     }
 
     /**
@@ -27,4 +29,12 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
+
+    private native void nativeDownload();
+
+    private int onProgressCallBack(long total, long already) {
+        System.out.println("total:"+total);
+        System.out.println("already:"+already);
+        return 1;
+    }
 }
